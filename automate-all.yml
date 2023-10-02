@@ -1,0 +1,21 @@
+name: Automatic jupyter-notebook deployment
+
+jobs:
+  run-deployment:
+     runs-on: self-hosted
+
+     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run deployment yml file
+        run: |
+              kubectl apply -f deployment/jupyter-deployment-test.yml
+
+
+      - name: Forward port to localhost 
+        run: |
+              chmod +x jupyter-port-forward.sh
+              ./jupyter-port-forward.sh
+
+
