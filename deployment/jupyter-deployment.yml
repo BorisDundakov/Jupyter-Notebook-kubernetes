@@ -17,3 +17,8 @@ spec:
           image: jupyter/scipy-notebook
           ports:
             - containerPort: 8888
+
+      volumes:
+      - name: jupyter-volume
+        persistentVolumeClaim:
+          claimName: jupyter-notebook-pvc
